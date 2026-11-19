@@ -37,6 +37,10 @@ section { border-bottom: 1px solid var(--line) }
 .slot { border-style: dashed; color: var(--muted); min-height: 130px; display: grid; place-content: center; text-align: center }
 .hero .slot { min-height: 290px }
 .video { aspect-ratio: 16/9 }
+.carousel-controls:not([hidden]) { display:flex; justify-content:flex-end; gap:10px; margin-bottom:10px }
+.carousel-controls button { min-width:44px; min-height:44px; border:1px solid var(--line); border-radius:4px; background:var(--slate); color:var(--ivory); font-size:1.3rem; cursor:pointer }
+.carousel-controls button:disabled { opacity:.45; cursor:default }
+.carousel-controls button:focus-visible, .cases:focus-visible { outline:3px solid var(--copper); outline-offset:2px }
 .cases { display: grid; grid-auto-flow: column; grid-auto-columns: clamp(220px, 29vw, 270px); gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 5px 5px 16px }
 .case { scroll-snap-align: start }
 .case .slot { margin-bottom: 14px; aspect-ratio: 3/2 }
@@ -66,8 +70,12 @@ nav { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 16px }
 </section>
 <section id="casos">
 <h2>Qual será o vosso primeiro caso?</h2>
-<p>Deslizem para explorar as investigações e escolham a que mais vos desperta curiosidade.</p>
-<div class="cases" role="region" aria-label="Carrossel de casos" tabindex="0">
+<p>Deslizem para explorar os casos. Cada investigação tem um mistério e um nível de dificuldade.</p>
+<div class="carousel-controls" hidden>
+<button type="button" aria-label="Caso anterior" aria-controls="lista-casos">←</button>
+<button type="button" aria-label="Caso seguinte" aria-controls="lista-casos">→</button>
+</div>
+<div class="cases" id="lista-casos" role="region" aria-label="Carrossel de casos" tabindex="0">
 <article class="case"><div class="slot">Inserir capa</div><small>Segredos · Fácil</small><h3>O envelope desaparecido na Beira</h3><details><summary>Ver caso</summary><p>Três pessoas passaram pela sala. Quem viu o envelope pela última vez?</p></details></article>
 <article class="case"><div class="slot">Inserir capa</div><small>Depoimentos · Médio</small><h3>A última chamada da Matola</h3><details><summary>Ver caso</summary><p>Uma chamada de 14 segundos põe em causa a versão de uma testemunha.</p></details></article>
 <article class="case"><div class="slot">Inserir capa</div><small>Álibis · Difícil</small><h3>O bilhete no quarto 12</h3><details><summary>Ver caso</summary><p>O bilhete mandava procurar uma chave. Mas a porta já estava aberta.</p></details></article>
@@ -83,7 +91,7 @@ nav { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 16px }
 </div>
 </section>
 <section id="conteudo">
-<h2>Vejam o que vem em cada caso</h2>
+<h2>O que vão receber</h2>
 <div class="split">
 <div class="slot">Inserir páginas de amostra de um caso</div>
 <div><h3>A história</h3><p>Saibam o que aconteceu e conheçam as pessoas envolvidas.</p>
@@ -106,7 +114,9 @@ nav { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 16px }
 </section>
 <section id="oferta" class="split">
 <div><h2>O vosso próximo encontro já tem um caso</h2>
-<p>Um pacote digital com 150 investigações, organizadas por dificuldade, com soluções separadas e um mini-caso de estreia.</p>
+<p>Joguem em casal, em casa de um de vocês ou na casa que partilham.</p>
+<ul><li>150 investigações digitais organizadas por dificuldade</li><li>Soluções separadas para consultar no fim</li><li>Mini-caso extra para a primeira partida</li></ul>
+<p>Uma colecção completa para escolherem um mistério diferente sempre que quiserem jogar.</p>
 <p class="muted">Preço em MT, meios de pagamento e entrega por confirmar.</p>
 <span class="cta-disabled">Quero os 150 casos · Compra por configurar</span></div>
 <div class="slot">Inserir mockup do pacote completo</div>
@@ -133,5 +143,30 @@ nav { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 16px }
 <li style="--sample:#c9b9bc">Rosa acinzentado · #C9B9BC · Legendas</li>
 </ul></details>
 </footer>
+<script>
+const track = document.querySelector('#lista-casos');
+const controls = document.querySelector('.carousel-controls');
+const [previous, next] = controls.querySelectorAll('button');
+const cards = [...track.children];
+
+function updateControls() {
+  previous.disabled = track.scrollLeft < 2;
+  next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+}
+
+function move(direction) {
+  const step = cards[1].offsetLeft - cards[0].offsetLeft;
+  const index = Math.round(track.scrollLeft / step);
+  const target = Math.max(0, Math.min(cards.length - 1, index + direction));
+  track.scrollTo({left: target * step, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
+}
+
+controls.hidden = false;
+previous.addEventListener('click', () => move(-1));
+next.addEventListener('click', () => move(1));
+track.addEventListener('scroll', updateControls, {passive: true});
+window.addEventListener('resize', updateControls);
+updateControls();
+</script>
 </body>
 </html>
