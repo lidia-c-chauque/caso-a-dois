@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="pt-MZ">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Caso a Dois — Rascunho da página de vendas</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root {
+  --navy: #111c27; --slate: #1c2d3c; --ivory: #f6efe2;
+  --copper: #e8aa73; --muted: #b4c1cc; --line: #4b5c69;
+  --heading: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --body: "Source Sans 3", system-ui, sans-serif;
+}
+* { box-sizing: border-box }
+body { margin: 0; background: var(--navy); color: var(--ivory); font: 1.125rem/1.55 var(--body) }
+a { color: var(--copper) }
+a:focus-visible, summary:focus-visible, article[tabindex]:focus-visible { outline: 3px solid var(--copper); outline-offset: 4px }
+header, section, footer { max-width: 1100px; margin: auto; padding: clamp(22px, 5vw, 64px) }
+header { display: flex; justify-content: space-between; gap: 16px; align-items: center; padding-block: 22px; border-bottom: 1px solid var(--line) }
+header strong { font: 700 2rem var(--heading) }
+small, .muted { color: var(--muted) }
+h1, h2, h3 { font-family: var(--heading); line-height: 1.02; margin: 0 0 .45em }
+h1 { font-size: clamp(2.8rem, 7vw, 5.7rem) }
+h2 { font-size: clamp(2.3rem, 5vw, 3.7rem) }
+h3 { font-size: 1.65rem }
+p { margin: 0 0 1em }
+.hero, .split, .columns { display: grid; gap: 20px }
+.hero, .split { grid-template-columns: 1.2fr 1fr; align-items: center }
+.columns { grid-template-columns: repeat(3, 1fr) }
+.button { display: inline-block; background: var(--copper); color: var(--navy); padding: 12px 18px; text-decoration: none; border-radius: 4px; font-weight: 700 }
+section { border-bottom: 1px solid var(--line) }
+.slot, .panel, .case { border: 1px solid var(--line); border-radius: 8px; padding: 18px; background: var(--slate) }
+.slot { border-style: dashed; color: var(--muted); min-height: 130px; display: grid; place-content: center; text-align: center }
+.hero .slot { min-height: 290px }
+.video { aspect-ratio: 16/9 }
+.cases { display: grid; grid-auto-flow: column; grid-auto-columns: clamp(220px, 29vw, 270px); gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 5px 5px 16px }
+.case { scroll-snap-align: start }
+.case .slot { margin-bottom: 14px; aspect-ratio: 3/2 }
+details { border-top: 1px solid var(--line); padding: 12px 0 }
+summary { cursor: pointer; font-weight: 700 }
+details p { margin: .6em 0 0 }
+.swatches { display: flex; flex-wrap: wrap; padding: 0; list-style: none; gap: 12px }
+.swatches li { padding: 8px 12px; border: 1px solid var(--line); border-top: 8px solid var(--sample); border-radius: 4px }
+nav { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 16px }
+.cta-disabled { display: inline-block; color: var(--muted); border: 1px solid var(--line); border-radius: 4px; padding: 10px 14px }
+@media (max-width: 700px) { .hero, .split, .columns { grid-template-columns: 1fr } }
+</style>
+</head>
+<body>
+<header><strong>Caso a Dois</strong><small>Rascunho de trabalho</small></header>
+<main>
+<section class="hero" id="inicio" aria-labelledby="titulo">
+<div><h1 id="titulo">150 casos de investigação para se divertirem a dois, sem sair de casa</h1>
+<p>Escolham um caso, leiam os depoimentos e juntem as pistas. Discutam as vossas teorias até descobrirem juntos o que aconteceu.</p>
+<a class="button" href="#oferta">Quero investigar a dois</a></div>
+<div class="slot">Inserir mockup do pacote e páginas do caso</div>
+</section>
+<section id="casos">
+<h2>Qual será o vosso primeiro caso?</h2>
+<p>Deslizem para explorar as investigações e escolham a que mais vos desperta curiosidade.</p>
+<div class="cases" role="region" aria-label="Carrossel de casos" tabindex="0">
+<article class="case"><div class="slot">Inserir capa</div><small>Segredos · Fácil</small><h3>O envelope desaparecido na Beira</h3><details><summary>Ver caso</summary><p>Três pessoas passaram pela sala. Quem viu o envelope pela última vez?</p></details></article>
+<article class="case"><div class="slot">Inserir capa</div><small>Depoimentos · Médio</small><h3>A última chamada da Matola</h3><details><summary>Ver caso</summary><p>Uma chamada de 14 segundos põe em causa a versão de uma testemunha.</p></details></article>
+<article class="case"><div class="slot">Inserir capa</div><small>Álibis · Difícil</small><h3>O bilhete no quarto 12</h3><details><summary>Ver caso</summary><p>O bilhete mandava procurar uma chave. Mas a porta já estava aberta.</p></details></article>
+<article class="case"><div class="slot">Inserir capa</div><small>Objectos trocados · Fácil</small><h3>A mala trocada na paragem</h3><details><summary>Ver caso</summary><p>Duas malas iguais. Só uma guardava uma fotografia escondida.</p></details></article>
+<article class="case"><div class="slot">Inserir capa</div><small>Segredos de família · Médio</small><h3>O retrato virado</h3><details><summary>Ver caso</summary><p>Uma fotografia da véspera mostra o que mudou na sala antes da festa.</p></details></article>
+<article class="case"><div class="slot">Inserir capa</div><small>Identidade · Médio</small><h3>A reserva das oito</h3><details><summary>Ver caso</summary><p>A reserva estava em nome de alguém que estava fora da cidade.</p></details></article>
+<article class="case"><div class="slot">Inserir capa</div><small>Fraude · Difícil</small><h3>O recibo de domingo</h3><details><summary>Ver caso</summary><p>O recibo regista uma compra no dia em que a loja estava fechada.</p></details></article>
+<article class="case"><div class="slot">Inserir capa</div><small>Horários · Difícil</small><h3>O relógio da estação</h3><details><summary>Ver caso</summary><p>Duas testemunhas dizem ter apanhado o mesmo comboio.</p></details></article>
+<article class="case"><div class="slot">Inserir capa</div><small>Desaparecimento · Difícil</small><h3>A encomenda do cais</h3><details><summary>Ver caso</summary><p>A encomenda chegou, mas o livro diz que já tinha sido levantada.</p></details></article>
+<article class="case"><div class="slot">Inserir capa</div><small>Suspense · Extremo</small><h3>O som atrás da porta</h3><details><summary>Ver caso</summary><p>Um som ao fundo põe em causa a hora de uma gravação.</p></details></article>
+<article class="case"><div class="slot">Inserir capa</div><small>Passado oculto · Extremo</small><h3>A fotografia sem data</h3><details><summary>Ver caso</summary><p>Quatro pessoas aparecem juntas. Uma garante que ainda nem conhecia as outras.</p></details></article>
+<article class="case"><h3>150 casos para resolverem a dois</h3><a href="#oferta">Ver a colecção completa</a></article>
+</div>
+</section>
+<section id="conteudo">
+<h2>Vejam o que vem em cada caso</h2>
+<div class="split"><div class="slot video">Inserir VSL e imagem de abertura</div>
+<div><h3>A história</h3><p>Saibam o que aconteceu e conheçam as pessoas envolvidas.</p>
+<h3>As pistas</h3><p>Comparem fotografias, mensagens e depoimentos, conforme a investigação.</p>
+<h3>A solução</h3><p>Guardem a resposta para o fim e confirmem como as pistas se ligam.</p></div></div>
+<div class="slot">Inserir páginas de amostra do mesmo caso mostrado na VSL</div>
+</section>
+<section id="jogar">
+<h2>Como se joga</h2>
+<div class="columns">
+<article class="panel"><h3>1. Escolham um caso</h3><p>Leiam a história e vejam o que precisam de descobrir.</p></article>
+<article class="panel"><h3>2. Juntem as pistas</h3><p>Contem um ao outro o que encontraram e decidam qual é a vossa teoria.</p></article>
+<article class="panel"><h3>3. Confiram a solução</h3><p>Abram a resposta quando estiverem prontos e vejam se acertaram.</p></article>
+</div></section>
+<section id="bonus" class="split">
+<div><h2>O primeiro desafio a dois</h2><p>Um mini-caso extra para estrearem o jogo. Uma pessoa lê o depoimento e a outra vê as mensagens. Só quando partilharem o que encontraram é que a pista faz sentido.</p></div>
+<div class="slot">Inserir capa do mini-caso e confirmar o bónus</div>
+</section>
+<section id="testemunhos">
+<h2>Como foi jogar a dois?</h2><div class="slot">Inserir testemunhos autorizados de casais que testaram o jogo</div>
+</section>
+<section id="oferta" class="split">
+<div><h2>O vosso próximo encontro já tem um caso</h2>
+<p>Um pacote digital com 150 investigações, organizadas por dificuldade, com soluções separadas e um mini-caso de estreia.</p>
+<p class="muted">Preço em MT, meios de pagamento e entrega por confirmar.</p>
+<span class="cta-disabled">Quero os 150 casos · Compra por configurar</span></div>
+<div class="slot">Inserir mockup do pacote completo</div>
+</section>
+<section id="perguntas">
+<h2>Perguntas frequentes</h2>
+<details><summary>Precisamos de viver juntos para jogar?</summary><p>Podem jogar quando estiverem juntos, seja em casa de um de vocês ou na casa que partilham.</p></details>
+<details><summary>Precisamos de ter experiência?</summary><p>Podem começar pelos casos de nível fácil e avançar ao vosso ritmo.</p></details>
+<details><summary>Podemos jogar no telemóvel? É preciso imprimir?</summary><p>Confirmar o formato digital final e a opção de impressão.</p></details>
+<details><summary>Quanto dura uma investigação?</summary><p>Preencher com as durações observadas nos testes.</p></details>
+<details><summary>Onde vemos a solução?</summary><p>Cada caso tem uma solução separada para abrirem depois de escolherem a vossa teoria.</p></details>
+<details><summary>Como recebemos o jogo depois de pagar?</summary><p>Preencher após confirmar o processo de pagamento e entrega.</p></details>
+</section>
+</main>
+<footer>
+<nav aria-label="Secções da página"><a href="#inicio">Início</a><a href="#casos">Casos</a><a href="#conteudo">Conteúdo</a><a href="#jogar">Como jogar</a><a href="#bonus">Bónus</a><a href="#testemunhos">Testemunhos</a><a href="#oferta">Oferta</a><a href="#perguntas">Perguntas</a></nav>
+<details><summary>Guia visual do rascunho</summary>
+<p><strong>Barlow Condensed</strong> nos títulos. <strong>Source Sans 3</strong> nos textos, botões e legendas.</p>
+<ul class="swatches">
+<li style="--sample:#111c27">Azul-noite · #111C27 · Fundo</li>
+<li style="--sample:#1c2d3c">Azul-ardósia · #1C2D3C · Cartões</li>
+<li style="--sample:#f6efe2">Marfim · #F6EFE2 · Texto</li>
+<li style="--sample:#e8aa73">Cobre · #E8AA73 · Botões</li>
+<li style="--sample:#b4c1cc">Cinza-azulado · #B4C1CC · Legendas</li>
+</ul></details>
+</footer>
+</body>
+</html>
