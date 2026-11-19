@@ -8,8 +8,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 :root {
-  --navy: #111c27; --slate: #1c2d3c; --ivory: #f6efe2;
-  --copper: #e8aa73; --muted: #b4c1cc; --line: #4b5c69;
+  --navy: #110e10; --slate: #22181b; --ivory: #f6efe2;
+  --copper: #ee777d; --muted: #c9b9bc; --line: #62434a;
   --heading: "Barlow Condensed", "Arial Narrow", sans-serif;
   --body: "Source Sans 3", system-ui, sans-serif;
 }
@@ -27,8 +27,10 @@ h2 { font-size: clamp(2.3rem, 5vw, 3.7rem) }
 h3 { font-size: 1.65rem }
 p { margin: 0 0 1em }
 .hero, .split, .columns { display: grid; gap: 20px }
-.hero, .split { grid-template-columns: 1.2fr 1fr; align-items: center }
-.columns { grid-template-columns: repeat(3, 1fr) }
+.hero, .split { grid-template-columns: minmax(0, 1fr) }
+.hero { max-width: 820px; text-align: center }
+.hero .video { width: 100%; min-height: 0; margin-inline: auto }
+.columns { grid-template-columns: minmax(0, 1fr) }
 .button { display: inline-block; background: var(--copper); color: var(--navy); padding: 12px 18px; text-decoration: none; border-radius: 4px; font-weight: 700 }
 section { border-bottom: 1px solid var(--line) }
 .slot, .panel, .case { border: 1px solid var(--line); border-radius: 8px; padding: 18px; background: var(--slate) }
@@ -45,7 +47,11 @@ details p { margin: .6em 0 0 }
 .swatches li { padding: 8px 12px; border: 1px solid var(--line); border-top: 8px solid var(--sample); border-radius: 4px }
 nav { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 16px }
 .cta-disabled { display: inline-block; color: var(--muted); border: 1px solid var(--line); border-radius: 4px; padding: 10px 14px }
-@media (max-width: 700px) { .hero, .split, .columns { grid-template-columns: 1fr } }
+@media (min-width: 701px) {
+  .split { grid-template-columns: 1.2fr 1fr; align-items: center }
+  .columns { grid-template-columns: repeat(3, minmax(0, 1fr)) }
+}
+@media (max-width: 700px) { .hero .button { width: 100% } }
 </style>
 </head>
 <body>
@@ -53,9 +59,10 @@ nav { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 16px }
 <main>
 <section class="hero" id="inicio" aria-labelledby="titulo">
 <div><h1 id="titulo">150 casos de investigação para se divertirem a dois, sem sair de casa</h1>
-<p>Escolham um caso, leiam os depoimentos e juntem as pistas. Discutam as vossas teorias até descobrirem juntos o que aconteceu.</p>
-<a class="button" href="#oferta">Quero investigar a dois</a></div>
-<div class="slot">Inserir mockup do pacote e páginas do caso</div>
+<p>Abram um caso, comparem as provas e ouçam a versão de cada suspeito. Juntem as pistas até descobrirem, em equipa, o que aconteceu.</p>
+</div>
+<div class="slot video" aria-label="Espaço reservado para a VSL">Inserir vídeo de apresentação do Caso a Dois</div>
+<div><a class="button" href="#oferta">Quero investigar a dois</a></div>
 </section>
 <section id="casos">
 <h2>Qual será o vosso primeiro caso?</h2>
@@ -77,11 +84,11 @@ nav { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 16px }
 </section>
 <section id="conteudo">
 <h2>Vejam o que vem em cada caso</h2>
-<div class="split"><div class="slot video">Inserir VSL e imagem de abertura</div>
+<div class="split">
+<div class="slot">Inserir páginas de amostra de um caso</div>
 <div><h3>A história</h3><p>Saibam o que aconteceu e conheçam as pessoas envolvidas.</p>
 <h3>As pistas</h3><p>Comparem fotografias, mensagens e depoimentos, conforme a investigação.</p>
 <h3>A solução</h3><p>Guardem a resposta para o fim e confirmem como as pistas se ligam.</p></div></div>
-<div class="slot">Inserir páginas de amostra do mesmo caso mostrado na VSL</div>
 </section>
 <section id="jogar">
 <h2>Como se joga</h2>
@@ -119,11 +126,11 @@ nav { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 16px }
 <details><summary>Guia visual do rascunho</summary>
 <p><strong>Barlow Condensed</strong> nos títulos. <strong>Source Sans 3</strong> nos textos, botões e legendas.</p>
 <ul class="swatches">
-<li style="--sample:#111c27">Azul-noite · #111C27 · Fundo</li>
-<li style="--sample:#1c2d3c">Azul-ardósia · #1C2D3C · Cartões</li>
+<li style="--sample:#110e10">Preto-vinho · #110E10 · Fundo</li>
+<li style="--sample:#22181b">Vinho escuro · #22181B · Cartões</li>
 <li style="--sample:#f6efe2">Marfim · #F6EFE2 · Texto</li>
-<li style="--sample:#e8aa73">Cobre · #E8AA73 · Botões</li>
-<li style="--sample:#b4c1cc">Cinza-azulado · #B4C1CC · Legendas</li>
+<li style="--sample:#ee777d">Vermelho coral · #EE777D · Botões</li>
+<li style="--sample:#c9b9bc">Rosa acinzentado · #C9B9BC · Legendas</li>
 </ul></details>
 </footer>
 </body>
