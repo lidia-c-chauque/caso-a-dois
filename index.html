@@ -302,19 +302,12 @@ footer nav a{font-size:.9rem}
 </div>
 <div class="vsl" aria-label="Vídeo de apresentação">
 <div class="vsl-frame">
-<video class="video" controls playsinline preload="metadata" poster="https://caso-a-dois-omega.vercel.app/vsl.jpg" aria-label="Vídeo de apresentação do Caso a Dois">
+<video class="video" controls playsinline preload="metadata" aria-label="Vídeo de apresentação do Caso a Dois">
   <source src="https://caso-a-dois-fitn346ci-lidia-c-chauque.vercel.app/vsl.mp4" type="video/mp4">
-  <a href="./vsl.mp4">Abrir o vídeo de apresentação</a>
+  O teu navegador não consegue reproduzir este vídeo.
 </video>
-<button class="vsl-start" type="button" hidden>
-  <span class="vsl-label">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4zM16 9l5 6m0-6-5 6"/></svg>
-    <span class="vsl-action">Toca para ouvir</span>
-  </span>
-</button>
-<progress value="0" max="1" aria-label="Progresso do vídeo" hidden></progress>
 </div>
-<p class="vsl-error" role="status" hidden>Não foi possível reproduzir o vídeo. Toca para tentar novamente.</p>
+<p class="vsl-error" role="status" hidden>Não foi possível carregar o vídeo. Verifica a ligação à internet e tenta novamente.</p>
 </div>
 <div class="pdf-intro"><h2>Uma experiência investigativa imersiva em PDF</h2><p>Analisa as provas, interroga os suspeitos e desvenda crimes reais <strong class="headline-count">a dois</strong>.</p></div>
 <div><a class="button" href="#oferta">Começar a investigação</a><p class="assurances"><span>Acesso vitalício</span><span>Pagamento seguro</span></p></div>
@@ -431,65 +424,10 @@ footer nav a{font-size:.9rem}
 </ul></details>
 </footer>
 <script>
-const player = document.querySelector('.vsl');
-const video = player.querySelector('video');
-const start = player.querySelector('.vsl-start');
-const action = start.querySelector('.vsl-action');
-const soundIcon = start.querySelector('svg');
-const progress = player.querySelector('progress');
-const error = player.querySelector('.vsl-error');
-let hasPlayed = false;
-
-function updateProgress() {
-  const duration = video.duration;
-  progress.value = Number.isFinite(duration) && duration > 0
-    ? video.currentTime / duration
-    : 0;
-}
-
-function updatePlayback() {
-  const playing = !video.paused && !video.ended;
-  const label = video.ended ? 'Ver novamente' : hasPlayed ? 'Continuar' : 'Toca para ouvir';
-  action.textContent = label;
-  soundIcon.style.display = hasPlayed ? 'none' : '';
-  start.classList.toggle('is-playing', playing);
-  start.setAttribute('aria-label', playing ? 'Pausar vídeo' : label);
-}
-
-async function togglePlayback() {
-  if (!video.paused && !video.ended) {
-    video.pause();
-    return;
-  }
-  error.hidden = true;
-  if (video.ended) {
-    video.currentTime = 0;
-    updateProgress();
-  }
-  video.muted = false;
-  try {
-    await video.play();
-  } catch {
-    error.hidden = false;
-    updatePlayback();
-  }
-}
-
-video.muted = true;
-video.controls = false;
-start.hidden = false;
-progress.hidden = false;
-start.addEventListener('click', togglePlayback);
-video.addEventListener('playing', () => {
-  hasPlayed = true;
-  updatePlayback();
-});
-for (const event of ['pause', 'ended']) video.addEventListener(event, updatePlayback);
-for (const event of ['loadedmetadata', 'durationchange', 'timeupdate', 'ended']) {
-  video.addEventListener(event, updateProgress);
-}
-updatePlayback();
-updateProgress();
+const vslVideo = document.querySelector('.vsl video');
+const vslError = document.querySelector('.vsl-error');
+vslVideo.addEventListener('error', () => { vslError.hidden = false; });
+vslVideo.addEventListener('loadeddata', () => { vslError.hidden = true; });
 
 const track = document.querySelector('#lista-casos');
 const controls = document.querySelector('.carousel-controls');
