@@ -339,6 +339,18 @@ body:has(#case-sheet[open]) {overflow:hidden}
 #jogar h3 {margin:.4rem 0;font:700 1.22rem/1.25 var(--ui-font)}
 #jogar li p {margin:0;color:#c4c5cd;font:400 1rem/1.55 var(--meta-font)}
 </style>
+<style>
+#bonus {max-width:48rem}
+#bonus .bonus-faixa {display:flex;justify-content:center;background:repeating-linear-gradient(-48deg,#ffcc38 0 12px,#93700b 12px 22px);color:#15130c}
+.bonus-faixa span {padding:.45rem .9rem;background:#ffcc38;font:750 .85rem/1.4 var(--meta-font);text-align:center;text-transform:uppercase}
+#bonus h2 {margin:1.45rem 0 1rem;font-size:clamp(1.45rem,4vw,2rem)}
+.bonus-ficha {padding:clamp(1rem,4vw,1.55rem);border:1px solid #595032;border-radius:14px;background:#1b1c21}
+.bonus-ficha+.bonus-ficha {margin-top:.85rem}
+#bonus .bonus-ficha h3 {display:flex;align-items:center;gap:.65rem;margin:0 0 .65rem;font:700 1.22rem/1.25 var(--ui-font)}
+.bonus-ficha svg {width:1.4rem;flex:none;color:#ffd34d}
+#bonus .bonus-ficha p {margin:0 0 .8rem;color:#dedde2;font:400 1rem/1.52 var(--ui-font)}
+.bonus-ficha small {display:block;border-top:1px solid #3c3c40;padding-top:.65rem;color:#e9cb78;font:.85rem/1.45 var(--meta-font)}
+</style>
 </head>
 <body>
 <main>
@@ -430,9 +442,19 @@ body:has(#case-sheet[open]) {overflow:hidden}
 <li><span class="guia-icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx='12' cy='12' r='9'/><circle cx='12' cy='12' r='5'/><circle cx='12' cy='12' r='1'/></svg></span>
 <div><span class="guia-etapa">Etapa 03</span><h3>Digam quem foi</h3><p>Escolham juntos o suspeito e a pista que vos convenceu. Depois, abram a solução para ver se acertaram.</p></div></li>
 </ol></section>
-<section id="bonus" class="split">
-<div><h2>O primeiro desafio a dois</h2><p>Um mini-caso extra para estrearem o jogo. Uma pessoa lê o depoimento e a outra vê as mensagens. Só quando partilharem o que encontraram é que a pista faz sentido.</p></div>
-<div class="slot">Inserir capa do mini-caso e confirmar o bónus</div>
+<section id="bonus" aria-labelledby="bonus-title">
+<div class="bonus-faixa"><span>Bónus por tempo limitado</span></div>
+<h2 id="bonus-title">Dois bónus exclusivos do Kit Completo</h2>
+<article class="bonus-ficha">
+<h3><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v11h14V9m-10 4h6"/></svg>Arquivo de Casos Resolvidos</h3>
+<p>Cria o teu próprio arquivo de investigações. No fim de cada caso, anota de quem desconfiaste, quem foi o culpado e qual foi a pista decisiva.</p>
+<small>Caderno digital para preencher ou imprimir</small>
+</article>
+<article class="bonus-ficha">
+<h3><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><circle cx="12" cy="14" r="8"/><path d="M12 10v4l3 2M9 2h6m-3 0v4m6 1 2-2"/></svg>Desafio dos 10 Minutos</h3>
+<p>Tens dez minutos para um mistério? Em cada história, há um detalhe que contradiz a versão de alguém. Tenta descobri-lo e confere a tua resposta no fim.</p>
+<small>3 mini-mistérios · Cerca de 10 minutos por caso · Soluções incluídas</small>
+</article>
 </section>
 <section id="testemunhos">
 <h2>Como foi jogar a dois?</h2><div class="slot">Inserir testemunhos autorizados de casais que testaram o jogo</div>
@@ -441,7 +463,7 @@ body:has(#case-sheet[open]) {overflow:hidden}
 <h2>Escolhe o teu plano</h2>
 <div class="plans">
 <article class="panel"><h3>Plano inicial</h3><p class="price">150 MT</p><p>Para começar a investigar. Conteúdo do plano a confirmar.</p><button class="cta-disabled" disabled>Escolher plano inicial</button></article>
-<article class="panel premium"><h3>Plano completo</h3><p class="price">397 MT</p><p>Mais de 150 casos de investigação, com soluções para consultar no fim.</p><button class="cta-disabled" disabled>Escolher plano completo</button></article>
+<article class="panel premium"><h3>Kit Completo</h3><p class="price">397 MT</p><p>Mais de 150 casos de investigação, com soluções para consultar no fim.</p><p>Por tempo limitado, inclui o Arquivo de Casos Resolvidos e o Desafio dos 10 Minutos.</p><button class="cta-disabled" disabled>Escolher Kit Completo</button></article>
 </div>
 <p class="muted offer-note">Compra disponível após configuração do pagamento.</p>
 </section>
