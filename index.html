@@ -73,6 +73,12 @@ nav { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 16px }
 .hero .video { display:block; max-width:320px; aspect-ratio:9/16; background:#241c22; border:1px solid var(--line); border-radius:8px; object-fit:contain }
 .vsl { width:100%; max-width:320px; margin-inline:auto }
 .vsl-frame { position:relative; overflow:hidden; border-radius:8px }
+.vsl .video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:contain;background:#09090b}
+.vsl-start{position:absolute;inset:0;display:grid;place-items:center;width:100%;border:0;background:linear-gradient(transparent,#0005);color:#fff;cursor:pointer}
+.vsl-start[hidden]{display:none}
+.vsl-label{padding:13px 16px;border-radius:8px;background:#ff2028;color:#fff;font:700 .9rem/1.3 system-ui,sans-serif;box-shadow:0 8px 28px #0008}
+.vsl-meta{display:flex;justify-content:space-between;padding:8px 2px;color:#aeb4bf;font:600 .75rem/1.3 system-ui,sans-serif}
+.vsl-cta[hidden]{display:none}
 .vsl-start { position:absolute; inset:0; width:100%; border:0; background:#0e0c0e38; color:#100a0b; cursor:pointer; font:700 1rem var(--body); padding:0 }
 .vsl-start:not([hidden]) { display:grid; place-items:center }
 .vsl-label { display:flex; align-items:center; gap:10px; padding:12px 16px; border-radius:6px; background:rgb(255 69 78 / 76%); }
@@ -302,15 +308,19 @@ footer nav a{font-size:.9rem}
 </div>
 <div class="vsl" aria-label="Vídeo de apresentação">
 <div class="vsl-frame">
-<video class="video" controls playsinline preload="metadata" aria-label="Vídeo de apresentação do Caso a Dois">
-  <source src="https://caso-a-dois-fitn346ci-lidia-c-chauque.vercel.app/vsl.mp4" type="video/mp4">
+<video class="video" controls playsinline webkit-playsinline muted autoplay preload="auto" poster="https://caso-a-dois-fitn346ci-lidia-c-chauque.vercel.app/src/vsl.jpg" aria-label="Vídeo de apresentação do Caso a Dois">
+  <source src="https://caso-a-dois-fitn346ci-lidia-c-chauque.vercel.app/src/vsl.mp4" type="video/mp4">
   O teu navegador não consegue reproduzir este vídeo.
 </video>
+<button class="vsl-start" type="button" aria-label="Activar som e reproduzir vídeo">
+  <span class="vsl-label">▶ TOQUE PARA ASSISTIR COM SOM</span>
+</button>
+<div class="vsl-meta" aria-live="off"><span class="vsl-current">00:00</span><span class="vsl-remaining">Faltam 00:50</span></div>
 </div>
 <p class="vsl-error" role="status" hidden>Não foi possível carregar o vídeo. Verifica a ligação à internet e tenta novamente.</p>
 </div>
 <div class="pdf-intro"><h2>Uma experiência investigativa imersiva em PDF</h2><p>Analisa as provas, interroga os suspeitos e desvenda crimes reais <strong class="headline-count">a dois</strong>.</p></div>
-<div><a class="button" href="#oferta">Começar a investigação</a><p class="assurances"><span>Acesso vitalício</span><span>Pagamento seguro</span></p></div>
+<div class="vsl-cta" hidden><a class="button" href="#oferta">Começar a investigação</a><p class="assurances"><span>Acesso vitalício</span><span>Pagamento seguro</span></p></div>
 </section>
 <section id="casos">
 <h2>Qual será a tua primeira investigação?</h2>
@@ -426,8 +436,37 @@ footer nav a{font-size:.9rem}
 <script>
 const vslVideo = document.querySelector('.vsl video');
 const vslError = document.querySelector('.vsl-error');
-vslVideo.addEventListener('error', () => { vslError.hidden = false; });
-vslVideo.addEventListener('loadeddata', () => { vslError.hidden = true; });
+const vslStart = document.querySelector('.vsl-start');
+const vslCurrent = document.querySelector('.vsl-current');
+const vslRemaining = document.querySelector('.vsl-remaining');
+const vslCta = document.querySelector('.vsl-cta');
+const formatTime = value => {
+  if (!Number.isFinite(value)) return '00:00';
+  const seconds = Math.max(0, Math.floor(value));
+  return String(Math.floor(seconds / 60)).padStart(2,'0') + ':' + String(seconds % 60).padStart(2,'0');
+};
+if (vslVideo && vslError && vslStart) {
+  const updateVsl = () => {
+    const duration = Number.isFinite(vslVideo.duration) ? vslVideo.duration : 0;
+    const remaining = Math.max(0, duration - vslVideo.currentTime);
+    vslCurrent.textContent = formatTime(vslVideo.currentTime);
+    vslRemaining.textContent = 'Faltam ' + formatTime(remaining);
+    if (duration > 0 && remaining <= 45) vslCta.hidden = false;
+  };
+  vslStart.addEventListener('click', async () => {
+    vslVideo.muted = false;
+    vslVideo.controls = true;
+    try { await vslVideo.play(); vslStart.hidden = true; }
+    catch (_) { vslVideo.controls = true; }
+  });
+  vslVideo.addEventListener('play', () => { vslStart.hidden = true; });
+  vslVideo.addEventListener('pause', () => { if (!vslVideo.ended) vslStart.hidden = false; });
+  vslVideo.addEventListener('timeupdate', updateVsl);
+  vslVideo.addEventListener('loadedmetadata', updateVsl);
+  vslVideo.addEventListener('error', () => { vslError.hidden = false; vslStart.hidden = true; });
+  vslVideo.addEventListener('loadeddata', () => { vslError.hidden = true; });
+  vslVideo.play().then(() => { vslStart.hidden = false; }).catch(() => { vslStart.hidden = false; });
+}
 
 const track = document.querySelector('#lista-casos');
 const controls = document.querySelector('.carousel-controls');
