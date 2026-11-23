@@ -294,6 +294,34 @@ footer nav a{font-size:.9rem}
 #conteudo .receive-checklist .check-text{display:block;min-width:0}
 @media(max-width:700px){#conteudo .receive-checklist{gap:14px}#conteudo .receive-checklist li{grid-template-columns:20px minmax(0,1fr);gap:10px;font-size:.85rem;line-height:1.65}#conteudo .receive-checklist .check-icon,#conteudo .receive-checklist .check-icon svg{width:19px;height:19px}}
 </style>
+<style>
+#casos {max-width:1920px;padding-inline:clamp(14px,2vw,32px)}
+.archive-intro {max-width:38rem;margin:0 auto 1rem}
+.archive-intro>span,.sheet-number {font:600 .78rem/1.4 var(--meta-font);text-transform:uppercase;letter-spacing:.15em;color:#ff7877}
+.archive-intro>span::before {content:"";display:inline-block;width:2rem;height:2px;background:currentColor;margin-right:.6rem;vertical-align:middle}
+#casos .archive-intro h2 {font:700 clamp(1.8rem,4vw,2.7rem)/1.08 Georgia,serif;margin:.45rem 0}
+.archive-intro p {color:#c5c4cb;margin:0}
+#casos .cases {grid-auto-columns:clamp(205px,69vw,265px);gap:clamp(12px,1vw,20px);padding:5px 4px 12px;align-items:stretch}
+.dossier {position:relative;display:block;overflow:hidden;scroll-snap-align:start;border:1px solid #36363c;border-radius:12px;background:#15161a;padding:0;color:#fff;text-align:left;cursor:pointer;font:500 1rem/1.32 var(--ui-font)}
+.dossier img {display:block;width:100%;height:auto}
+.dossier-info {position:absolute;inset:auto 0 0;display:grid;justify-items:start;gap:.65rem;padding:22% .85rem .85rem;background:linear-gradient(transparent,rgba(8,9,12,.91) 48%,#0b0c10)}
+.difficulty {display:inline-block;border:1px solid currentColor;border-radius:4px;padding:.22rem .48rem;background:#171418;font:650 .75rem/1.4 var(--meta-font);text-transform:uppercase;letter-spacing:.035em}
+.difficulty[data-level="Extremo"] {color:#ff8381}
+.difficulty[data-level="Difícil"] {color:#ffb16c}
+.difficulty[data-level="Médio"] {color:#f5d86f}
+.dossier:focus-visible,#case-sheet button:focus-visible {outline:3px solid #ffd28a;outline-offset:2px}
+@media(min-width:1550px){#casos .cases {grid-auto-columns:minmax(0,1fr)}}
+#casos .carousel-controls[hidden]{display:none}
+#case-sheet {width:min(25rem,calc(100% - 32px));max-height:85dvh;overflow:auto;margin:auto;padding:1.1rem;border:1px solid #504449;border-radius:16px;background:#19191d;color:#f6efe2;box-shadow:0 20px 80px #0009}
+#case-sheet::backdrop {background:#08080bcc}
+body:has(#case-sheet[open]) {overflow:hidden}
+#case-sheet form {position:absolute;top:5px;right:5px}
+#case-sheet button {width:44px;height:44px;border:0;background:transparent;color:#eee;font:1.6rem/1 sans-serif;cursor:pointer}
+.sheet-heading {display:flex;align-items:center;gap:1rem;padding-right:1.25rem}
+.sheet-heading img {width:clamp(62px,18vw,84px);height:auto;border-radius:6px}
+#sheet-title {font:700 1.45rem/1.12 Georgia,serif;margin:.35rem 0 .6rem}
+#sheet-story {margin:1rem 0 0;font:400 1rem/1.5 var(--ui-font);color:#dfdce0}
+</style>
 </head>
 <body>
 <main>
@@ -322,60 +350,47 @@ footer nav a{font-size:.9rem}
 <div class="pdf-intro"><h2>Uma experiência investigativa imersiva em PDF</h2><p>Analisa as provas, interroga os suspeitos e desvenda crimes reais <strong class="headline-count">a dois</strong>.</p></div>
 <div class="vsl-cta" hidden><a class="button" href="#oferta">Começar a investigação</a><p class="assurances"><span>Acesso vitalício</span><span>Pagamento seguro</span></p></div>
 </section>
-<section id="casos">
-<h2>Qual será a tua primeira investigação?</h2>
-<p>Tudo começa com um caso. Escolhe entre histórias exclusivas, tramas inteligentes e finais surpreendentes. Abre um caso para começares a investigação.</p>
+<section id="casos" aria-labelledby="casos-heading">
+<header class="archive-intro"><span>Arquivos desclassificados</span><h2 id="casos-heading">Qual será a tua primeira investigação?</h2><p>Sete dossiês, sete mistérios. Toca numa capa para conheceres o caso.</p></header>
 <div class="carousel-controls" hidden>
 <button type="button" aria-label="Caso anterior" aria-controls="lista-casos">←</button>
 <button type="button" aria-label="Caso seguinte" aria-controls="lista-casos">→</button>
 </div>
 <div class="cases" id="lista-casos" role="region" aria-label="Carrossel de casos" tabindex="0">
-<article class="case">
-<details class="case-details"><summary><span class="slot" aria-hidden="true">Inserir capa</span><span class="case-title">O envelope perdido</span><span class="case-level">Nível fácil</span><span class="case-action">Ver detalhes</span></summary>
-<div class="case-description"><p>Três pessoas passaram pela sala. Quem viu o envelope pela última vez?</p><dl><div><dt>Tema</dt><dd>Segredos</dd></div><div><dt>Formato</dt><dd>PDF</dd></div><div><dt>Páginas</dt><dd>A confirmar</dd></div><div><dt>Suspeitos</dt><dd>A confirmar</dd></div></dl></div>
-</details></article>
-<article class="case">
-<details class="case-details"><summary><span class="slot" aria-hidden="true">Inserir capa</span><span class="case-title">A última chamada</span><span class="case-level">Nível médio</span><span class="case-action">Ver detalhes</span></summary>
-<div class="case-description"><p>Uma chamada de 14 segundos põe em causa a versão de uma testemunha.</p><dl><div><dt>Tema</dt><dd>Depoimentos</dd></div><div><dt>Formato</dt><dd>PDF</dd></div><div><dt>Páginas</dt><dd>A confirmar</dd></div><div><dt>Suspeitos</dt><dd>A confirmar</dd></div></dl></div>
-</details></article>
-<article class="case">
-<details class="case-details"><summary><span class="slot" aria-hidden="true">Inserir capa</span><span class="case-title">O quarto 12</span><span class="case-level">Nível difícil</span><span class="case-action">Ver detalhes</span></summary>
-<div class="case-description"><p>O bilhete mandava procurar uma chave. Mas a porta já estava aberta.</p><dl><div><dt>Tema</dt><dd>Álibis</dd></div><div><dt>Formato</dt><dd>PDF</dd></div><div><dt>Páginas</dt><dd>A confirmar</dd></div><div><dt>Suspeitos</dt><dd>A confirmar</dd></div></dl></div>
-</details></article>
-<article class="case">
-<details class="case-details"><summary><span class="slot" aria-hidden="true">Inserir capa</span><span class="case-title">A mala trocada</span><span class="case-level">Nível fácil</span><span class="case-action">Ver detalhes</span></summary>
-<div class="case-description"><p>Duas malas iguais. Só uma guardava uma fotografia escondida.</p><dl><div><dt>Tema</dt><dd>Objectos trocados</dd></div><div><dt>Formato</dt><dd>PDF</dd></div><div><dt>Páginas</dt><dd>A confirmar</dd></div><div><dt>Suspeitos</dt><dd>A confirmar</dd></div></dl></div>
-</details></article>
-<article class="case">
-<details class="case-details"><summary><span class="slot" aria-hidden="true">Inserir capa</span><span class="case-title">O retrato virado</span><span class="case-level">Nível médio</span><span class="case-action">Ver detalhes</span></summary>
-<div class="case-description"><p>Uma fotografia da véspera mostra o que mudou na sala antes da festa.</p><dl><div><dt>Tema</dt><dd>Segredos de família</dd></div><div><dt>Formato</dt><dd>PDF</dd></div><div><dt>Páginas</dt><dd>A confirmar</dd></div><div><dt>Suspeitos</dt><dd>A confirmar</dd></div></dl></div>
-</details></article>
-<article class="case">
-<details class="case-details"><summary><span class="slot" aria-hidden="true">Inserir capa</span><span class="case-title">A reserva das oito</span><span class="case-level">Nível médio</span><span class="case-action">Ver detalhes</span></summary>
-<div class="case-description"><p>A reserva estava em nome de alguém que estava fora da cidade.</p><dl><div><dt>Tema</dt><dd>Identidade</dd></div><div><dt>Formato</dt><dd>PDF</dd></div><div><dt>Páginas</dt><dd>A confirmar</dd></div><div><dt>Suspeitos</dt><dd>A confirmar</dd></div></dl></div>
-</details></article>
-<article class="case">
-<details class="case-details"><summary><span class="slot" aria-hidden="true">Inserir capa</span><span class="case-title">O recibo de domingo</span><span class="case-level">Nível difícil</span><span class="case-action">Ver detalhes</span></summary>
-<div class="case-description"><p>O recibo regista uma compra no dia em que a loja estava fechada.</p><dl><div><dt>Tema</dt><dd>Fraude</dd></div><div><dt>Formato</dt><dd>PDF</dd></div><div><dt>Páginas</dt><dd>A confirmar</dd></div><div><dt>Suspeitos</dt><dd>A confirmar</dd></div></dl></div>
-</details></article>
-<article class="case">
-<details class="case-details"><summary><span class="slot" aria-hidden="true">Inserir capa</span><span class="case-title">O relógio da estação</span><span class="case-level">Nível difícil</span><span class="case-action">Ver detalhes</span></summary>
-<div class="case-description"><p>Duas testemunhas dizem ter apanhado o mesmo comboio.</p><dl><div><dt>Tema</dt><dd>Horários</dd></div><div><dt>Formato</dt><dd>PDF</dd></div><div><dt>Páginas</dt><dd>A confirmar</dd></div><div><dt>Suspeitos</dt><dd>A confirmar</dd></div></dl></div>
-</details></article>
-<article class="case">
-<details class="case-details"><summary><span class="slot" aria-hidden="true">Inserir capa</span><span class="case-title">A encomenda do cais</span><span class="case-level">Nível difícil</span><span class="case-action">Ver detalhes</span></summary>
-<div class="case-description"><p>A encomenda chegou, mas o livro diz que já tinha sido levantada.</p><dl><div><dt>Tema</dt><dd>Desaparecimento</dd></div><div><dt>Formato</dt><dd>PDF</dd></div><div><dt>Páginas</dt><dd>A confirmar</dd></div><div><dt>Suspeitos</dt><dd>A confirmar</dd></div></dl></div>
-</details></article>
-<article class="case">
-<details class="case-details"><summary><span class="slot" aria-hidden="true">Inserir capa</span><span class="case-title">O som atrás da porta</span><span class="case-level">Nível extremo</span><span class="case-action">Ver detalhes</span></summary>
-<div class="case-description"><p>Um som ao fundo põe em causa a hora de uma gravação.</p><dl><div><dt>Tema</dt><dd>Suspense</dd></div><div><dt>Formato</dt><dd>PDF</dd></div><div><dt>Páginas</dt><dd>A confirmar</dd></div><div><dt>Suspeitos</dt><dd>A confirmar</dd></div></dl></div>
-</details></article>
-<article class="case">
-<details class="case-details"><summary><span class="slot" aria-hidden="true">Inserir capa</span><span class="case-title">A fotografia sem data</span><span class="case-level">Nível extremo</span><span class="case-action">Ver detalhes</span></summary>
-<div class="case-description"><p>Quatro pessoas aparecem juntas. Uma garante que ainda nem conhecia as outras.</p><dl><div><dt>Tema</dt><dd>Passado oculto</dd></div><div><dt>Formato</dt><dd>PDF</dd></div><div><dt>Páginas</dt><dd>A confirmar</dd></div><div><dt>Suspeitos</dt><dd>A confirmar</dd></div></dl></div>
-</details></article>
-<article class="case"><h3>+150 casos para investigar</h3><a href="#oferta">Ver a colecção completa</a></article>
+<button class="dossier" type="button" aria-label="O Ofício da Quinta Pele, nível extremo" aria-haspopup="dialog" data-synopsis="À luz do candeeiro, a máscara inacabada parece familiar. Entre os rostos da oficina, qual deles esconde a identidade que vocês procuram?">
+  <img src="capas/caso-01.webp" width="520" height="780" alt="O Ofício da Quinta Pele" loading="lazy" decoding="async">
+  <span class="dossier-info"><span>Quatro máscaras na parede. A quinta tem o rosto de quem?</span><span class="difficulty" data-level="Extremo">Nível extremo</span></span>
+</button>
+<button class="dossier" type="button" aria-label="A Conspiração Blackwood, nível extremo" aria-haspopup="dialog" data-synopsis="A carta traz o selo dos Blackwood. A fotografia conta outra história. Para perceberem quem ganha com o silêncio da família, comecem por quem ficou fora do retrato.">
+  <img src="capas/caso-02.webp" width="520" height="780" alt="A Conspiração Blackwood" loading="lazy" decoding="async">
+  <span class="dossier-info"><span>Uma fotografia de família põe uma herança em dúvida.</span><span class="difficulty" data-level="Extremo">Nível extremo</span></span>
+</button>
+<button class="dossier" type="button" aria-label="Última Rodada, nível difícil" aria-haspopup="dialog" data-synopsis="O bar fechou, mas alguém deixou a última jogada por fazer. À mesa, os dois copos e uma ficha solitária sugerem que o encontro terminou antes do combinado.">
+  <img src="capas/caso-03.webp" width="520" height="780" alt="Última Rodada" loading="lazy" decoding="async">
+  <span class="dossier-info"><span>Dois copos e uma carta virada. Quem se levantou primeiro?</span><span class="difficulty" data-level="Difícil">Nível difícil</span></span>
+</button>
+<button class="dossier" type="button" aria-label="Maré Morta, nível médio" aria-haspopup="dialog" data-synopsis="Um barco vermelho repousa na lama, ainda amarrado. Há pegadas junto ao casco. Foram deixadas por quem chegou no barco ou por quem já esperava na praia?">
+  <img src="capas/caso-04.webp" width="520" height="780" alt="Maré Morta" loading="lazy" decoding="async">
+  <span class="dossier-info"><span>A maré baixou. O barco voltou vazio.</span><span class="difficulty" data-level="Médio">Nível médio</span></span>
+</button>
+<button class="dossier" type="button" aria-label="Ecos do Apartamento 312, nível difícil" aria-haspopup="dialog" data-synopsis="A luz do 312 continua acesa. Do corredor, vê-se o auscultador suspenso junto à porta. O que faria alguém interromper uma chamada e deixar a casa assim?">
+  <img src="capas/caso-05.webp" width="520" height="780" alt="Ecos do Apartamento 312" loading="lazy" decoding="async">
+  <span class="dossier-info"><span>Uma porta entreaberta. Um telefone fora do gancho.</span><span class="difficulty" data-level="Difícil">Nível difícil</span></span>
+</button>
+<button class="dossier" type="button" aria-label="Noite Silenciosa, nível médio" aria-haspopup="dialog" data-synopsis="Só uma janela continua iluminada. No pátio, a bicicleta ficou encostada à parede, mas alguém seguiu a pé. O trilho ainda está visível. Para onde leva?">
+  <img src="capas/caso-06.webp" width="520" height="780" alt="Noite Silenciosa" loading="lazy" decoding="async">
+  <span class="dossier-info"><span>Na neve fresca, as pegadas passam por uma bicicleta intacta.</span><span class="difficulty" data-level="Médio">Nível médio</span></span>
+</button>
+<button class="dossier" type="button" aria-label="O Último Sussurro de Castiel, nível extremo" aria-haspopup="dialog" data-synopsis="Entre os bancos vazios, um gravador guarda o último sussurro de Castiel. Há uma diferença entre o que ele quis dizer e o que alguém queria que vocês ouvissem.">
+  <img src="capas/caso-07.webp" width="520" height="780" alt="O Último Sussurro de Castiel" loading="lazy" decoding="async">
+  <span class="dossier-info"><span>Uma cassete ficou no banco da igreja. Para quem era a mensagem?</span><span class="difficulty" data-level="Extremo">Nível extremo</span></span>
+</button>
 </div>
+<dialog id="case-sheet" aria-labelledby="sheet-title" aria-describedby="sheet-story">
+<form method="dialog"><button autofocus aria-label="Fechar ficha">×</button></form>
+<div class="sheet-heading"><img alt="" width="80" height="120"><div><span class="sheet-number"></span><h3 id="sheet-title"></h3><span class="difficulty"></span></div></div>
+<p id="sheet-story"></p>
+</dialog>
 </section>
 <section id="conteudo" class="receive-section" aria-labelledby="recebe-title">
 <div class="receive-heading"><div class="section-kicker"><span>ARQUIVOS DESCLASSIFICADOS</span></div><h2 id="recebe-title">O Que Você <span>Vai Receber</span></h2></div>
@@ -474,6 +489,7 @@ const [previous, next] = controls.querySelectorAll('button');
 const cards = [...track.children];
 
 function updateControls() {
+  controls.hidden = track.scrollWidth <= track.clientWidth + 2;
   previous.disabled = track.scrollLeft < 2;
   next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
 }
@@ -491,6 +507,23 @@ next.addEventListener('click', () => move(1));
 track.addEventListener('scroll', updateControls, {passive: true});
 window.addEventListener('resize', updateControls);
 updateControls();
+const sheet = document.querySelector('#case-sheet');
+cards.forEach((card, index) => {
+  card.addEventListener('click', () => {
+    const cover = card.querySelector('img');
+    sheet.querySelector('img').src = cover.src;
+    sheet.querySelector('#sheet-title').textContent = cover.alt;
+    sheet.querySelector('.sheet-number').textContent = 'Caso nº ' + String(index + 1).padStart(2, '0');
+    sheet.querySelector('.difficulty').replaceWith(card.querySelector('.difficulty').cloneNode(true));
+    sheet.querySelector('#sheet-story').textContent = card.dataset.synopsis;
+    sheet.showModal();
+  });
+});
+sheet.addEventListener('click', event => {
+  const bounds = sheet.getBoundingClientRect();
+  if (event.target === sheet && (event.clientX < bounds.left || event.clientX > bounds.right ||
+      event.clientY < bounds.top || event.clientY > bounds.bottom)) sheet.close();
+});
 </script>
 </body>
 </html>
