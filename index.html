@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preload" as="image" href="/poster.webp" fetchpriority="high">
 <meta name="robots" content="index,follow">
 <title>Caso a Dois — Investigue a Dois</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap">
@@ -351,6 +352,24 @@ body:has(#case-sheet[open]) {overflow:hidden}
 #bonus .bonus-ficha p {margin:0 0 .8rem;color:#dedde2;font:400 1rem/1.52 var(--ui-font)}
 .bonus-ficha small {display:block;border-top:1px solid #3c3c40;padding-top:.65rem;color:#e9cb78;font:.85rem/1.45 var(--meta-font)}
 </style>
+<style>
+#testemunhos {max-width:65rem}
+#testemunhos h2,#testemunhos>p {text-align:center}
+#testemunhos>p {max-width:55ch;margin:.6rem auto 1.25rem;color:#d1cdd1}
+.opinioes {display:grid;position:relative;grid-auto-flow:column;grid-auto-columns:min(84%,340px);gap:14px;list-style:none;margin:0;padding:0;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.opinioes li {display:grid;place-items:center;scroll-snap-align:start;overflow:hidden;background:#101114;border:1px solid #35353b;border-radius:14px}
+.opinioes img {display:block;width:100%;height:clamp(300px,105vw,425px);object-fit:contain}
+.opinioes-nav:not([hidden]) {display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:.8rem}
+.opinioes-nav button {width:44px;height:44px;border:1px solid #51515c;border-radius:50%;background:#202126;color:#fff;font-size:1.6rem;cursor:pointer}
+.opinioes-nav button:disabled {opacity:.38}
+.opinioes-nav span {font:.84rem var(--meta-font);color:#dedbe0}
+.vsl-frame .video {border:0}
+.vsl .vsl-label {background:#bd2029;color:white}
+.vsl .vsl-start {z-index:2}
+.vsl progress {z-index:3;height:4px;background:#ffffff38}
+.vsl progress::-webkit-progress-value {background:linear-gradient(90deg,#eb313a,#ffab77)}
+.vsl progress::-moz-progress-bar {background:#ff5659}
+</style>
 </head>
 <body>
 <main>
@@ -365,14 +384,14 @@ body:has(#case-sheet[open]) {overflow:hidden}
 </div>
 <div class="vsl" aria-label="Vídeo de apresentação">
 <div class="vsl-frame">
-<video class="video" controls playsinline webkit-playsinline muted autoplay preload="auto" aria-label="Vídeo de apresentação do Caso a Dois">
-  <source src="/vsl.mp4" type="video/mp4">
+<video class="video" playsinline preload="auto" poster="/poster.webp" disablepictureinpicture disableremoteplayback aria-label="Vídeo de apresentação do Caso a Dois">
+  <source src="/apresentacao.mp4" type="video/mp4">
   O teu navegador não consegue reproduzir este vídeo.
 </video>
 <button class="vsl-start" type="button" aria-label="Activar som e reproduzir vídeo">
   <span class="vsl-label">▶ TOQUE PARA ASSISTIR COM SOM</span>
 </button>
-<div class="vsl-meta" aria-live="off"><span class="vsl-current">00:00</span><span class="vsl-remaining">Faltam 00:50</span></div>
+<progress max="1" value="0" aria-label="Progresso do vídeo"></progress>
 </div>
 <p class="vsl-error" role="status" hidden>Não foi possível carregar o vídeo. Verifica a ligação à internet e tenta novamente.</p>
 </div>
@@ -456,8 +475,19 @@ body:has(#case-sheet[open]) {overflow:hidden}
 <small>3 mini-mistérios · Cerca de 10 minutos por caso · Soluções incluídas</small>
 </article>
 </section>
-<section id="testemunhos">
-<h2>Como foi jogar a dois?</h2><div class="slot">Inserir testemunhos autorizados de casais que testaram o jogo</div>
+<section id="testemunhos" aria-labelledby="opinioes-titulo">
+<h2 id="opinioes-titulo">O que dizem os nossos investigadores</h2>
+<p>Já somos mais de 10 mil investigadores activos. Estas são as mensagens de quem já jogou.</p>
+<ul class="opinioes" id="mensagens" aria-label="Mensagens de jogadores" tabindex="0">
+<li><img src="/depoimentos/01.webp" width="419" height="371" loading="lazy" decoding="async" alt="Um casal conta que passou a noite a jogar e quer experimentar o caso bónus."></li>
+<li><img src="/depoimentos/02.webp" width="407" height="363" loading="lazy" decoding="async" alt="Uma jogadora e o namorado gostaram do jogo e aguardam o próximo caso."></li>
+<li><img src="/depoimentos/03.webp" width="414" height="369" loading="lazy" decoding="async" alt="Uma jogadora diz que decifrar o caso levou tempo e valeu cada minuto."></li>
+<li><img src="/depoimentos/04.webp" width="279" height="493" loading="lazy" decoding="async" alt="Uma jogadora mostra o caso no computador e diz que está quase a resolvê-lo."></li>
+<li><img src="/depoimentos/05.webp" width="265" height="488" loading="lazy" decoding="async" alt="Uma jogadora conta que o caso a deixou de cabelo em pé."></li>
+<li><img src="/depoimentos/06.webp" width="278" height="491" loading="lazy" decoding="async" alt="Uma jogadora mostra as pistas impressas e os envelopes do jogo."></li>
+<li><img src="/depoimentos/07.webp" width="280" height="492" loading="lazy" decoding="async" alt="Uma mãe conta que a filha adorou e mostra a investigação em andamento."></li>
+</ul>
+<div class="opinioes-nav" hidden><button type="button" aria-controls="mensagens" aria-label="Depoimento anterior">‹</button><span></span><button type="button" aria-controls="mensagens" aria-label="Depoimento seguinte">›</button></div>
 </section>
 <section id="oferta">
 <h2>Escolhe o teu plano</h2>
@@ -491,39 +521,56 @@ body:has(#case-sheet[open]) {overflow:hidden}
 </ul></details>
 </footer>
 <script>
-const vslVideo = document.querySelector('.vsl video');
-const vslError = document.querySelector('.vsl-error');
-const vslStart = document.querySelector('.vsl-start');
-const vslCurrent = document.querySelector('.vsl-current');
-const vslRemaining = document.querySelector('.vsl-remaining');
-const vslCta = document.querySelector('.vsl-cta');
-const formatTime = value => {
-  if (!Number.isFinite(value)) return '00:00';
-  const seconds = Math.max(0, Math.floor(value));
-  return String(Math.floor(seconds / 60)).padStart(2,'0') + ':' + String(seconds % 60).padStart(2,'0');
-};
-if (vslVideo && vslError && vslStart) {
-  const updateVsl = () => {
-    const duration = Number.isFinite(vslVideo.duration) ? vslVideo.duration : 0;
-    const remaining = Math.max(0, duration - vslVideo.currentTime);
-    vslCurrent.textContent = formatTime(vslVideo.currentTime);
-    vslRemaining.textContent = 'Faltam ' + formatTime(remaining);
-    if (duration > 0 && remaining <= 45) vslCta.hidden = false;
-  };
-  vslStart.addEventListener('click', async () => {
-    vslVideo.muted = false;
-    vslVideo.controls = true;
-    try { await vslVideo.play(); vslStart.hidden = true; }
-    catch (_) { vslVideo.controls = true; }
-  });
-  vslVideo.addEventListener('play', () => { vslStart.hidden = true; });
-  vslVideo.addEventListener('pause', () => { if (!vslVideo.ended) vslStart.hidden = false; });
-  vslVideo.addEventListener('timeupdate', updateVsl);
-  vslVideo.addEventListener('loadedmetadata', updateVsl);
-  vslVideo.addEventListener('error', () => { vslError.hidden = false; vslStart.hidden = true; });
-  vslVideo.addEventListener('loadeddata', () => { vslError.hidden = true; });
-  vslVideo.play().then(() => { vslStart.hidden = false; }).catch(() => { vslStart.hidden = false; });
+const video = document.querySelector('.vsl video');
+const startVideo = document.querySelector('.vsl-start');
+const videoError = document.querySelector('.vsl-error');
+const progress = document.querySelector('.vsl progress');
+const videoOffer = document.querySelector('.vsl-cta');
+startVideo.addEventListener('click', async () => {
+  videoError.hidden = true;
+  if (video.error) video.load();
+  video.muted = false;
+  try { await video.play(); }
+  catch (error) {
+    if (error.name !== 'AbortError') videoError.hidden = false;
+  }
+});
+video.addEventListener('playing', () => { startVideo.hidden = true; videoError.hidden = true; });
+video.addEventListener('pause', () => { startVideo.hidden = false; });
+video.addEventListener('ended', () => { startVideo.hidden = false; });
+video.addEventListener('error', () => { startVideo.hidden = false; videoError.hidden = false; });
+video.addEventListener('timeupdate', () => {
+  if (!Number.isFinite(video.duration) || video.duration <= 0) return;
+  progress.value = video.currentTime / video.duration;
+  if (video.currentTime > 0 && video.duration - video.currentTime <= 45) videoOffer.hidden = false;
+});
+
+const messages = document.querySelector('#mensagens');
+const messageNav = document.querySelector('.opinioes-nav');
+const [back, forward] = messageNav.querySelectorAll('button');
+const items = Array.from(messages.children);
+function currentMessage() {
+  const distance = messages.scrollLeft;
+  return items.reduce((best, item, i) =>
+    Math.abs(item.offsetLeft - items[0].offsetLeft - distance) <
+    Math.abs(items[best].offsetLeft - items[0].offsetLeft - distance) ? i : best, 0);
 }
+function updateMessages() {
+  const end = messages.scrollWidth - messages.clientWidth;
+  messageNav.hidden = end < 2;
+  back.disabled = messages.scrollLeft < 2;
+  forward.disabled = messages.scrollLeft >= end - 2;
+  messageNav.querySelector('span').textContent = (currentMessage() + 1) + ' / ' + items.length;
+}
+function stepMessage(step) {
+  const item = items[Math.max(0, Math.min(items.length - 1, currentMessage() + step))];
+  messages.scrollTo({left:item.offsetLeft - items[0].offsetLeft, behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
+}
+back.addEventListener('click', () => stepMessage(-1));
+forward.addEventListener('click', () => stepMessage(1));
+messages.addEventListener('scroll', updateMessages, {passive:true});
+window.addEventListener('resize', updateMessages);
+updateMessages();
 
 const track = document.querySelector('#lista-casos');
 const controls = document.querySelector('.carousel-controls');
