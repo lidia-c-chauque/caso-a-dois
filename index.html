@@ -322,6 +322,23 @@ body:has(#case-sheet[open]) {overflow:hidden}
 #sheet-title {font:700 1.45rem/1.12 Georgia,serif;margin:.35rem 0 .6rem}
 #sheet-story {margin:1rem 0 0;font:400 1rem/1.5 var(--ui-font);color:#dfdce0}
 </style>
+<style>
+#jogar {max-width:44rem;--passo:clamp(2.6rem,8vw,3.2rem)}
+#jogar header {text-align:center}
+.guia-legenda {display:flex;align-items:center;gap:1rem;color:#adb0ba}
+.guia-legenda::before,.guia-legenda::after {content:"";flex:1;height:1px;background:#383a41}
+.guia-legenda,.guia-etapa {font:650 .78rem/1.4 var(--meta-font);text-transform:uppercase;letter-spacing:.1em}
+#jogar h2 {margin:.8rem 0 0;font-size:clamp(1.65rem,4vw,2.2rem)}
+#jogar em,.guia-etapa {color:#ffd34d;font-style:normal}
+#jogar ol {list-style:none;margin:clamp(1.7rem,5vw,2.7rem) 0 0;padding:0}
+#jogar li {position:relative;display:grid;grid-template-columns:var(--passo) minmax(0,1fr);gap:clamp(.8rem,3vw,1.3rem)}
+#jogar li+li {margin-top:2rem}
+#jogar li:not(:last-child)::after {content:"";position:absolute;left:calc(var(--passo)/2);top:calc(var(--passo) + .45rem);bottom:-1.5rem;border-left:1px solid #48494f}
+.guia-icone {width:var(--passo);height:var(--passo);display:grid;place-items:center;color:#ff525c;background:#24252b;border-radius:.9rem}
+.guia-icone svg {width:1.55rem}
+#jogar h3 {margin:.4rem 0;font:700 1.22rem/1.25 var(--ui-font)}
+#jogar li p {margin:0;color:#c4c5cd;font:400 1rem/1.55 var(--meta-font)}
+</style>
 </head>
 <body>
 <main>
@@ -403,13 +420,16 @@ body:has(#case-sheet[open]) {overflow:hidden}
 <ul class="receive-checklist"><li><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><circle cx="10" cy="10" r="8.25"></circle><path d="m6 10.2 2.55 2.55L14.4 7"></path></svg></span><span class="check-text">Relatórios policiais e transcrições de chamadas de emergência</span></li><li><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><circle cx="10" cy="10" r="8.25"></circle><path d="m6 10.2 2.55 2.55L14.4 7"></path></svg></span><span class="check-text">Laudos forenses e autópsias desenvolvidas (+18)</span></li><li><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><circle cx="10" cy="10" r="8.25"></circle><path d="m6 10.2 2.55 2.55L14.4 7"></path></svg></span><span class="check-text">Entrevistas com suspeitos e testemunhas (exclusivas)</span></li><li><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><circle cx="10" cy="10" r="8.25"></circle><path d="m6 10.2 2.55 2.55L14.4 7"></path></svg></span><span class="check-text">Depoimentos em Vídeo e Áudio</span></li><li><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><circle cx="10" cy="10" r="8.25"></circle><path d="m6 10.2 2.55 2.55L14.4 7"></path></svg></span><span class="check-text">Pistas físicas, digitais e mapas da cena do crime</span></li><li><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><circle cx="10" cy="10" r="8.25"></circle><path d="m6 10.2 2.55 2.55L14.4 7"></path></svg></span><span class="check-text">Links secretos para páginas online com mais evidências</span></li><li><span class="check-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><circle cx="10" cy="10" r="8.25"></circle><path d="m6 10.2 2.55 2.55L14.4 7"></path></svg></span><span class="check-text">Produto 100% digital — você pode imprimir ou jogar do celular</span></li></ul>
 <p class="receive-note">"Trabalhem em dupla ou em grupo. Usem seu raciocínio dedutivo, conectem as pistas e mergulhem em uma experiência investigativa."</p></div>
 </section>
-<section id="jogar">
-<h2>Como se joga</h2>
-<div class="columns">
-<article class="panel"><h3>1. Escolham um caso</h3><p>Leiam a história e vejam o que precisam de descobrir.</p></article>
-<article class="panel"><h3>2. Juntem as pistas</h3><p>Contem um ao outro o que encontraram e decidam qual é a vossa teoria.</p></article>
-<article class="panel"><h3>3. Confiram a solução</h3><p>Abram a resposta quando estiverem prontos e vejam se acertaram.</p></article>
-</div></section>
+<section id="jogar" aria-labelledby="guia-titulo">
+<header><div class="guia-legenda">Passo a passo</div><h2 id="guia-titulo">Como funciona a <em>investigação</em></h2></header>
+<ol>
+<li><span class="guia-icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d='M12 5q-4-3-9-1v14q5-2 9 1 4-3 9-1V4q-5-2-9 1zm0 0v14'/></svg></span>
+<div><span class="guia-etapa">Etapa 01</span><h3>Abram o caso</h3><p>Leiam juntos o que aconteceu e quem estava por perto. De quem desconfiam à primeira vista?</p></div></li>
+<li><span class="guia-icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx='10' cy='10' r='7'/><path d='m15 15 6 6'/></svg></span>
+<div><span class="guia-etapa">Etapa 02</span><h3>Comparem as pistas</h3><p>Vejam o que cada pessoa contou e comparem as versões. Há algum detalhe que parece fora do lugar?</p></div></li>
+<li><span class="guia-icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx='12' cy='12' r='9'/><circle cx='12' cy='12' r='5'/><circle cx='12' cy='12' r='1'/></svg></span>
+<div><span class="guia-etapa">Etapa 03</span><h3>Digam quem foi</h3><p>Escolham juntos o suspeito e a pista que vos convenceu. Depois, abram a solução para ver se acertaram.</p></div></li>
+</ol></section>
 <section id="bonus" class="split">
 <div><h2>O primeiro desafio a dois</h2><p>Um mini-caso extra para estrearem o jogo. Uma pessoa lê o depoimento e a outra vê as mensagens. Só quando partilharem o que encontraram é que a pista faz sentido.</p></div>
 <div class="slot">Inserir capa do mini-caso e confirmar o bónus</div>
@@ -436,7 +456,7 @@ body:has(#case-sheet[open]) {overflow:hidden}
 </section>
 </main>
 <footer>
-<nav aria-label="Secções da página"><a href="#inicio">Início</a><a href="#casos">Casos</a><a href="#conteudo">Conteúdo</a><a href="#jogar">Como jogar</a><a href="#bonus">Bónus</a><a href="#testemunhos">Testemunhos</a><a href="#oferta">Oferta</a><a href="#perguntas">Perguntas</a></nav>
+<nav aria-label="Secções da página"><a href="#inicio">Início</a><a href="#casos">Casos</a><a href="#conteudo">Conteúdo</a><a href="#jogar">Como funciona</a><a href="#bonus">Bónus</a><a href="#testemunhos">Testemunhos</a><a href="#oferta">Oferta</a><a href="#perguntas">Perguntas</a></nav>
 <details><summary>Guia visual do rascunho</summary>
 <p><strong>Barlow Condensed</strong> nos títulos. <strong>Source Sans 3</strong> nos textos, botões e legendas.</p>
 <ul class="swatches">
