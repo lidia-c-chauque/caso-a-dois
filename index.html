@@ -218,6 +218,11 @@ summary{line-height:1.5}
 #jogar h2,#bonus h2,#testemunhos h2,#oferta h2,#perguntas h2,#casos h2{font-family:var(--ui-font);font-weight:750;letter-spacing:-.04em;line-height:1.2}
 #jogar .columns{margin-top:22px}
 #oferta .plans{gap:18px;margin-top:22px}
+#oferta .premium {
+  border: 2px solid #d9b657;
+  background: linear-gradient(150deg, #30291c, #18181b 68%);
+}
+#oferta .premium .price { color: #f5d780 }
 #oferta .panel h3{font-size:1.25rem}
 #oferta .price{font-family:var(--ui-font);font-size:2.1rem}
 #perguntas details{padding:17px 0}
@@ -463,7 +468,7 @@ body:has(#case-sheet[open]) {overflow:hidden}
 </ol></section>
 <section id="bonus" aria-labelledby="bonus-title">
 <div class="bonus-faixa"><span>Bónus por tempo limitado</span></div>
-<h2 id="bonus-title">Dois bónus exclusivos do Kit Completo</h2>
+<h2 id="bonus-title">Dois bónus exclusivos do Plano Completo</h2>
 <article class="bonus-ficha">
 <h3><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v11h14V9m-10 4h6"/></svg>Arquivo de Casos Resolvidos</h3>
 <p>Cria o teu próprio arquivo de investigações. No fim de cada caso, anota de quem desconfiaste, quem foi o culpado e qual foi a pista decisiva.</p>
@@ -493,8 +498,8 @@ body:has(#case-sheet[open]) {overflow:hidden}
 <h2>Escolhe o teu plano</h2>
 <div class="plans">
 <article class="panel">
-<h3>Kit Essencial</h3>
-<p class="price">197 MT</p>
+<h3>Plano Inicial</h3>
+<p class="price">97 MT</p>
 <ul>
   <li>+100 Mistérios Criminais</li>
   <li>Caso Alice Vargas</li>
@@ -503,9 +508,9 @@ body:has(#case-sheet[open]) {overflow:hidden}
   <li>Solução completa para cada caso</li>
   <li>Acesso Vitalício</li>
 </ul>
-<button class="cta-disabled" disabled>Escolher Kit Essencial</button>
+<button class="cta-disabled" disabled>Escolher Plano Inicial</button>
 </article>
-<article class="panel premium"><h3>Kit Completo</h3><p class="price">397 MT</p><p>Mais de 150 casos de investigação, com soluções para consultar no fim.</p><p>Por tempo limitado, inclui o Arquivo de Casos Resolvidos e o Desafio dos 10 Minutos.</p><button class="cta-disabled" disabled>Escolher Kit Completo</button></article>
+<article class="panel premium"><h3>Plano Completo</h3><p class="price">397 MT</p><p>Mais de 150 casos de investigação, com soluções para consultar no fim.</p><p>Por tempo limitado, inclui o Arquivo de Casos Resolvidos e o Desafio dos 10 Minutos.</p><button class="cta-disabled" disabled>Escolher Plano Completo</button></article>
 </div>
 <p class="muted offer-note">Compra disponível após configuração do pagamento.</p>
 </section>
