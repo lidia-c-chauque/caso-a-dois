@@ -375,6 +375,22 @@ body:has(#case-sheet[open]) {overflow:hidden}
 .vsl progress::-webkit-progress-value {background:linear-gradient(90deg,#eb313a,#ffab77)}
 .vsl progress::-moz-progress-bar {background:#ff5659}
 </style>
+<style>
+#oferta .plans { align-items: stretch; grid-template-columns: minmax(0, 1fr) }
+#oferta .panel { display: flex; flex-direction: column; padding: 0; overflow: hidden; min-width: 0 }
+.offer-body { display: flex; flex-direction: column; flex: 1; padding: clamp(18px, 4vw, 28px); gap: 14px }
+#oferta .offer-body > * { margin: 0 }
+#oferta .offer-banner { padding: 9px 16px; margin: 0; background: #e8c76b; color: #211b0f; font-weight: 750; text-align: center }
+#oferta .offer-price { display: flex; align-items: baseline; flex-wrap: wrap; gap: .65rem }
+#oferta .offer-price del { color: #bdbdc5; font-size: 1rem }
+#oferta .offer-price strong { color: #fff; font: 750 clamp(2rem, 7vw, 2.6rem)/1.12 var(--ui-font) }
+#oferta .premium .offer-price strong { color: #f5d780 }
+.offer-items { list-style: none; padding: 0 }
+.offer-items li { position: relative; padding: .52rem 0 .52rem 1.45rem; line-height: 1.45; border-bottom: 1px solid #ffffff18 }
+.offer-items li::before { content: "✓"; position: absolute; left: 0; color: #dbc177 }
+#oferta .offer-body button { margin-top: auto; min-height: 44px }
+@media (min-width: 701px) { #oferta .plans { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+</style>
 </head>
 <body>
 <main>
@@ -468,7 +484,7 @@ body:has(#case-sheet[open]) {overflow:hidden}
 </ol></section>
 <section id="bonus" aria-labelledby="bonus-title">
 <div class="bonus-faixa"><span>Bónus por tempo limitado</span></div>
-<h2 id="bonus-title">Dois bónus exclusivos do Plano Completo</h2>
+<h2 id="bonus-title">Dois bónus exclusivos da Imersão Total</h2>
 <article class="bonus-ficha">
 <h3><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v11h14V9m-10 4h6"/></svg>Arquivo de Casos Resolvidos</h3>
 <p>Cria o teu próprio arquivo de investigações. No fim de cada caso, anota de quem desconfiaste, quem foi o culpado e qual foi a pista decisiva.</p>
@@ -495,12 +511,12 @@ body:has(#case-sheet[open]) {overflow:hidden}
 <div class="opinioes-nav" hidden><button type="button" aria-controls="mensagens" aria-label="Depoimento anterior">‹</button><span></span><button type="button" aria-controls="mensagens" aria-label="Depoimento seguinte">›</button></div>
 </section>
 <section id="oferta">
-<h2>Escolhe o teu plano</h2>
+<h2>Escolhe a tua investigação</h2>
 <div class="plans">
-<article class="panel">
-<h3>Plano Inicial</h3>
-<p class="price">97 MT</p>
-<ul>
+<article class="panel" aria-label="Oferta de 197 meticais">
+<div class="offer-body">
+<p class="offer-price"><del aria-label="Preço anterior de 893 meticais">893 MT</del> <strong>197 MT</strong></p>
+<ul class="offer-items">
   <li>+100 Mistérios Criminais</li>
   <li>Caso Alice Vargas</li>
   <li>PDF completo com documentos investigativos</li>
@@ -508,9 +524,33 @@ body:has(#case-sheet[open]) {overflow:hidden}
   <li>Solução completa para cada caso</li>
   <li>Acesso Vitalício</li>
 </ul>
-<button class="cta-disabled" disabled>Escolher Plano Inicial</button>
+<button class="cta-disabled" disabled>Quero investigar</button>
+</div>
 </article>
-<article class="panel premium"><h3>Plano Completo</h3><p class="price">397 MT</p><p>Mais de 150 casos de investigação, com soluções para consultar no fim.</p><p>Por tempo limitado, inclui o Arquivo de Casos Resolvidos e o Desafio dos 10 Minutos.</p><button class="cta-disabled" disabled>Escolher Plano Completo</button></article>
+<article class="panel premium" aria-labelledby="imersao-title">
+<p class="offer-banner">O mais escolhido</p>
+<div class="offer-body">
+<h3 id="imersao-title">Imersão Total</h3>
+<p class="offer-price"><del aria-label="Preço anterior de 1.394 meticais">1.394 MT</del> <strong>397 MT</strong></p>
+<ul class="offer-items">
+<li><strong>Caso Imersivo “O Golden Room”</strong></li>
+<li><strong>Provas e depoimentos em Vídeo e Áudio</strong></li>
+<li><strong>Acesso à Delegacia</strong></li>
+<li>+100 Mistérios Criminais</li>
+<li>Caso Alice Vargas</li>
+<li>PDF completo com documentos investigativos</li>
+<li>Entrega instantânea para começar hoje</li>
+<li>Acesso vitalício</li>
+<li>Solução completa disponível caso precise de ajuda</li>
+</ul>
+<h4>Bónus incluídos</h4>
+<ul class="offer-items">
+<li>Arquivo de Casos Resolvidos</li>
+<li>Desafio dos 10 Minutos</li>
+</ul>
+<button class="cta-disabled" disabled>Quero a Imersão Total</button>
+</div>
+</article>
 </div>
 <p class="muted offer-note">Compra disponível após configuração do pagamento.</p>
 </section>
